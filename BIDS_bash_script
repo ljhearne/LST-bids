@@ -1,0 +1,91 @@
+#!/bin/bash
+module unload gcc/5.4.0
+module load dcm2niix
+module load pydeface
+module load pigz
+
+#set -e #this makes the script stop if there is an error
+
+ProjectDir="/home/lukehearne/qm89_scratch/LSTBIDS/"
+
+## subject list
+listOfSubjects=$(<${ProjectDir}subjects.txt)
+
+## input (raw data) and output (BIDS) folder path names
+in_folder_name=${ProjectDir}0_rawdata
+out_folder_name=${ProjectDir}LST_bids
+
+## loop through subjects
+for subj in $listOfSubjects
+do
+
+    echo "------------------------"
+    echo "------------------------"
+    echo "Analyzing sub-"${subj//S}                                             #the //S removes the 'S' from the subject
+    echo "------------------------"
+    echo "------------------------"
+    
+    ## create new BIDS subject folder (with /anat and /func)
+    mkdir -p $out_folder_name/sub-${subj//S}/anat
+    mkdir -p $out_folder_name/sub-${subj//S}/func
+
+    ## convert T1w DICOM to NIfTI and .json files
+    ## make temporary(?) directory in raw data folder for unzipped DICOM files
+    tmpDir=${in_folder_name}/${subj}/tmp/                                       #this is repeated a lot so I created a variable
+    mkdir -p ${tmpDir}
+  
+    ## unzip DICOM files
+    unzip -q $in_folder_name/${subj}/MP2RAGE.zip -d ${tmpDir}
+    echo "sub-"${subj//S} MP2RAGE folder is unzipped
+  
+    ## convert to NIfTI and .json, send to BIDS-formatted folder
+    dcm2niix -z y -ba y -o $out_folder_name/sub-${subj//S}/anat -f sub-"${subj//S}"_T1w ${tmpDir}
+    pydeface $out_folder_name/sub-${subj//S}/anat/sub-"${subj//S}"_T1w.nii.gz --outfile $out_folder_name/sub-${subj//S}/anat/sub-"${subj//S}"_T1w.nii.gz --force 
+    echo "sub-"${subj//S} MP2RAGE bids finished
+  
+    ## clean up
+    echo ${tmpDir}
+    rm -r ${tmpDir}*
+
+    ## convert task DICOMs to NIfTI and .json files
+    for num in 1 2 3 # loop through up to 3 runs of R/RUN and REST
+    do
+    
+        ## Task Run
+        if [ -e $in_folder_name/${subj}*/R${num}.zip ]
+        then
+            echo "------------------------"
+            echo "Analyzing sub-"${subj//S} Task RUN${num}
+            echo "------------------------"
+            
+            unzip -q $in_folder_name/${subj}/R${num}.zip -d ${tmpDir}
+            dcm2niix -z y -ba y -o $out_folder_name/sub-${subj//S}/func -f sub-"${subj//S}"_task-LST_run-"$num"_bold ${tmpDir}
+            #pydeface $out_folder_name/sub-${subj//S}/func/sub-"${subj//S}"_task-LST_run-"$num"_bold.nii.gz --outfile $out_folder_name/sub-${subj//S}/func/sub-"${subj//S}"_task-LST_run-"$num"_bold.nii.gz --force            
+            rm -r ${tmpDir}/*
+
+        elif [ -e $in_folder_name/$subj*/RUN${num}.zip ] # check for other spellings
+        then
+            echo "------------------------"
+            echo "Analyzing sub-"${subj//S} Task RUN${num}
+            echo "------------------------"
+            
+            unzip -q $in_folder_name/${subj}*/RUN${num}.zip -d ${tmpDir}
+            dcm2niix -z y -ba y -o $out_folder_name/sub-${subj//S}/func -f sub-"${subj//S}"_task-LSTrun-"$num"_bold ${tmpDir}
+            rm -r ${tmpDir}/*
+        fi
+        
+        ## Resting-state 1 and 2
+        if [ -e $in_folder_name/$subj*/REST_${num}.zip ]
+        then
+            echo "------------------------"
+            echo "Analyzing sub-"${subj//S} Task REST${num}
+            echo "------------------------"
+            
+            unzip -q $in_folder_name/${subj}*/REST_${num}.zip -d ${tmpDir}
+            dcm2niix -z y -ba y -o $out_folder_name/sub-${subj//S}/func -f sub-"${subj//S}"_task-rest_run-"$num"_bold ${tmpDir}
+            rm -r ${tmpDir}/*
+        else
+            echo "Could not find sub-"${subj//S} Task REST${num}
+        fi
+    done
+done
