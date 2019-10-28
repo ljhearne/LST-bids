@@ -61,7 +61,7 @@ do
             unzip -q $in_folder_name/${subj}/R${num}.zip -d ${tmpDir}
             dcm2niix -z y -ba y -o $out_folder_name/sub-${subj//S}/func -f sub-"${subj//S}"_task-LST_run-"$num"_bold ${tmpDir}
             #pydeface $out_folder_name/sub-${subj//S}/func/sub-"${subj//S}"_task-LST_run-"$num"_bold.nii.gz --outfile $out_folder_name/sub-${subj//S}/func/sub-"${subj//S}"_task-LST_run-"$num"_bold.nii.gz --force            
-            rm -r ${tmpDir}/*
+            rm -r ${tmpDir}*
 
         elif [ -e $in_folder_name/$subj*/RUN${num}.zip ] # check for other spellings
         then
@@ -71,7 +71,7 @@ do
             
             unzip -q $in_folder_name/${subj}*/RUN${num}.zip -d ${tmpDir}
             dcm2niix -z y -ba y -o $out_folder_name/sub-${subj//S}/func -f sub-"${subj//S}"_task-LSTrun-"$num"_bold ${tmpDir}
-            rm -r ${tmpDir}/*
+            rm -r ${tmpDir}*
         fi
         
         ## Resting-state 1 and 2
@@ -83,7 +83,7 @@ do
             
             unzip -q $in_folder_name/${subj}*/REST_${num}.zip -d ${tmpDir}
             dcm2niix -z y -ba y -o $out_folder_name/sub-${subj//S}/func -f sub-"${subj//S}"_task-rest_run-"$num"_bold ${tmpDir}
-            rm -r ${tmpDir}/*
+            rm -r ${tmpDir}*
         else
             echo "Could not find sub-"${subj//S} Task REST${num}
         fi
