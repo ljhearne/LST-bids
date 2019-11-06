@@ -32,22 +32,21 @@ All scan files were converted from scanner DICOM files using dcm2niix. Defacing 
 * Luke Hearne
 * Luca Cocchi
 * Jason Mattingley
-* 
+
 ### DATASET DOI
-
 https://doi.org/10.14264/uql.2019.780
+
 ### LICENSE
-CC
+CC (see [UQ espace](https://espace.library.uq.edu.au/view/UQ:734743) for details)
+
 ### ACKNOWLEDGEMENTS
-
 Kirsten Peterson helped write the codes to convert the BIDS data. Zoie Nott and Oscar Jacoby helped collect the data.
-HOW TO ACKNOWLEDGE
 
-Please cite this paper: Hearne, L. J., Cocchi, L., Zalesky, A., & Mattingley. (2017). Reconfiguration of brain network architectures between resting state and complexity-dependent cognitive reasoning, Journal of Neuroscience
+### HOW TO ACKNOWLEDGE
+Please cite [this paper](https://www.jneurosci.org/content/37/35/8399): Hearne, L. J., Cocchi, L., Zalesky, A., & Mattingley. (2017). Reconfiguration of brain network architectures between resting state and complexity-dependent cognitive reasoning, Journal of Neuroscience
 
-REFERENCES AND LINKS
-
-https://www.jneurosci.org/content/37/35/8399
-https://www.sciencedirect.com/science/article/abs/pii/S0896627319307755
-https://www.sciencedirect.com/science/article/pii/S2213158218303437
-https://econtent.hogrefe.com/doi/abs/10.1027/1015-5759/a000520?journalCode=jpa
+### REFERENCES AND LINKS
+* https://www.jneurosci.org/content/37/35/8399
+* https://www.sciencedirect.com/science/article/abs/pii/S0896627319307755
+* https://www.sciencedirect.com/science/article/pii/S2213158218303437
+* https://econtent.hogrefe.com/doi/abs/10.1027/1015-5759/a000520?journalCode=jpa
