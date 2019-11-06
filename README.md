@@ -26,6 +26,7 @@ All scan files were converted from scanner DICOM files using dcm2niix. Defacing 
 * SBREF scans are not included in version 1.0 of the dataset as a large majority of them have been lost or corrupted.
 * No field maps were acquired in the data collection phase.
 * There is noticeable dropout in the striatum in some subjects.
+* Not all participants completed the extra visual search and fluid intelligence tests (form boards and paperfolding).
 
 ### AUTHORS
 * Luke Hearne
