@@ -6,10 +6,13 @@ V1: Uploaded by Luke Hearne 04/11/2019.
 Authored by Luke Hearne, Luca Cocchi, and Jason Mattingley
 
 __Files__: 922, Size: 223.85GB, Subjects: 62, Session: 1
+
 __Available Tasks__: rest, LST
+
 __Available Modalities__: T1w, bold
 
-[__DOWNLOAD HERE__](http://data.qld.edu.au/public/Q1361/)
+
+#### [__DOWNLOAD HERE__](http://data.qld.edu.au/public/Q1361/)
 
 ## README
 Preprocessed data described in: Hearne, L. J., Cocchi, L., Zalesky, A., & Mattingley. (2017). Reconfiguration of brain network architectures between resting state and complexity-dependent cognitive reasoning, Journal of Neuroscience: https://doi.org/10.1523/JNEUROSCI.0485-17.2017
