@@ -15,7 +15,9 @@ __Available Modalities__: T1w, bold
 # [__DOWNLOAD HERE__](http://data.qld.edu.au/public/Q1361/)
 
 ## README
-Preprocessed data described in: Hearne, L. J., Cocchi, L., Zalesky, A., & Mattingley. (2017). Reconfiguration of brain network architectures between resting state and complexity-dependent cognitive reasoning, Journal of Neuroscience: https://doi.org/10.1523/JNEUROSCI.0485-17.2017
+Data described in: 
+
+Hearne, L. J., Cocchi, L., Zalesky, A., & Mattingley. (2017). Reconfiguration of brain network architectures between resting state and complexity-dependent cognitive reasoning, Journal of Neuroscience: https://doi.org/10.1523/JNEUROSCI.0485-17.2017
 are available at http://data.qld.edu.au/public/Q1361/ and via University of Queensland “Espace” at: https://espace.library.uq.edu.au/view/UQ:734743
 
 ### SUBJECTS / PARTICIPANTS
