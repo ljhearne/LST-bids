@@ -21,13 +21,13 @@ Hearne, L. J., Cocchi, L., Zalesky, A., & Mattingley. (2017). Reconfiguration of
 are available at http://data.qld.edu.au/public/Q1361/ and via University of Queensland “Espace” at: https://espace.library.uq.edu.au/view/UQ:734743
 
 ### SUBJECTS / PARTICIPANTS
-The participants.tsv file contains subject IDs with demographic informations.
+The participants.tsv file contains subject IDs with demographic information.
 
 ### SCAN-SPECIFIC NOTES
 All scan files were converted from scanner DICOM files using dcm2niix. Defacing was performed using pydeface.
 
 ### KNOWN ISSUES:
-* Approximately 10% of the subject’s had detrimental head motion effects.
+* Approximately 10% of the subject’s had detrimental head motion effects (depending on how you define your cutoff).
 * SBREF scans are not included in version 1.0 of the dataset as a large majority of them have been lost or corrupted.
 * No field maps were acquired in the data collection phase.
 * There is noticeable dropout in the striatum in some subjects.
@@ -45,7 +45,7 @@ https://doi.org/10.14264/uql.2019.780
 CC (see [UQ espace](https://espace.library.uq.edu.au/view/UQ:734743) for details)
 
 ### ACKNOWLEDGEMENTS
-Kirsten Peterson helped write the codes to convert the BIDS data. Zoie Nott and Oscar Jacoby helped collect the data.
+Kirsten Peterson helped write the code to convert the BIDS data. Zoie Nott and Oscar Jacoby helped collect the data.
 
 ### HOW TO ACKNOWLEDGE
 Please cite [this paper](https://www.jneurosci.org/content/37/35/8399): Hearne, L. J., Cocchi, L., Zalesky, A., & Mattingley. (2017). Reconfiguration of brain network architectures between resting state and complexity-dependent cognitive reasoning, Journal of Neuroscience
